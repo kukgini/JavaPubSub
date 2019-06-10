@@ -9,18 +9,18 @@ public class Runner {
 		Subscriber<String> subscriber3 = new Subscriber<>(3);
 		Subscriber<String> subscriber4 = new Subscriber<>(4);
 		
-		Event.operation.subscribe("action#create", subscriber1);
-		Event.operation.subscribe("action#create", subscriber2);
+		Event.on.subscribe("action#create", subscriber1);
+		Event.on.subscribe("action#create", subscriber2);
 
-		Event.operation.subscribe("action#update", subscriber3);
-		Event.operation.subscribe("action#delete", subscriber4);
+		Event.on.subscribe("action#update", subscriber3);
+		Event.on.subscribe("action#delete", subscriber4);
 
 		Message<String> message1 = new Message<>("Create Action");
 		Message<String> message2 = new Message<>("Update Action");
 		Message<String> message3 = new Message<>("Delete Action");
 		
-		Event.operation.publish("action#create", message1);
-		Event.operation.publish("action#update", message2);
-		Event.operation.publish("action#delete", message3);
+		Event.on.publish("action#create", message1);
+		Event.on.publish("action#update", message2);
+		Event.on.publish("action#delete", message3);
 	}
 }
