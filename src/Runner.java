@@ -3,6 +3,7 @@ import pubsub.Message;
 
 public class Runner {
 
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {		
 		Event.on.subscribe("action#create", m -> print(1,m));
 		Event.on.subscribe("action#create", m -> print(2,m));
