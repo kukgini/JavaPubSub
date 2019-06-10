@@ -15,7 +15,7 @@ public class Operation extends Event {
         channels.get(channelName).put(subscriber.hashCode(), new WeakReference<>(subscriber));
     }
 
-    public void publish(String channelName, Envelop message) {
+    public void publish(String channelName, Message message) {
         for(Map.Entry<Integer, WeakReference<Object>> subs : channels.get(channelName).entrySet()) {
             WeakReference<Object> subscriberRef = subs.getValue();
 
@@ -30,7 +30,7 @@ public class Operation extends Event {
         }
     }
 
-    public <T, P extends Envelop> boolean deliverMessage(T subscriber, Method method, Envelop message) {
+    public <T, P extends Message> boolean deliverMessage(T subscriber, Method method, Message message) {
         try {
             boolean methodFound = false;
             for (final Class paramClass : method.getParameterTypes()) {

@@ -1,5 +1,5 @@
 import pubsub.Event;
-import pubsub.Envelop;
+import pubsub.Message;
 
 public class Runner {
 
@@ -15,9 +15,9 @@ public class Runner {
 		Event.operation.subscribe("action#update", subscriber3);
 		Event.operation.subscribe("action#delete", subscriber4);
 
-		Envelop<String> envelop1 = new Envelop<>("Create Action");
-		Envelop<String> envelop2 = new Envelop<>("Update Action");
-		Envelop<String> envelop3 = new Envelop<>("Delete Action");
+		Message<String> envelop1 = new Message<>("Create Action");
+		Message<String> envelop2 = new Message<>("Update Action");
+		Message<String> envelop3 = new Message<>("Delete Action");
 		
 		Event.operation.publish("action#create", envelop1);
 		Event.operation.publish("action#update", envelop2);

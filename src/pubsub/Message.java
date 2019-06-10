@@ -1,9 +1,9 @@
 package pubsub;
 
-public class Envelop<T> {
+public class Message<T> {
     private T message;
 
-    public Envelop(T message) {
+    public Message(T message) {
         this.message = message;
     }
     
