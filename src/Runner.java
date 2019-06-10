@@ -19,6 +19,7 @@ public class Runner {
 		Event.on.publish("action#delete", message3);
 	}
 	public static void print(int id, Message<String>  m) {
-		System.out.printf("Subscriber[%d] received: %s%n", id, m.open());
+		String s = m.open();
+		System.out.printf("Subscriber[%d] received: %s%n", id, s);
 	}
 }
