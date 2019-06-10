@@ -3,17 +3,11 @@ import pubsub.Message;
 
 public class Runner {
 
-	public static void main(String[] args) {
-		Subscriber<String> subscriber1 = new Subscriber<>(1);
-		Subscriber<String> subscriber2 = new Subscriber<>(2);
-		Subscriber<String> subscriber3 = new Subscriber<>(3);
-		Subscriber<String> subscriber4 = new Subscriber<>(4);
-		
-		Event.on.subscribe("action#create", subscriber1);
-		Event.on.subscribe("action#create", subscriber2);
-
-		Event.on.subscribe("action#update", subscriber3);
-		Event.on.subscribe("action#delete", subscriber4);
+	public static void main(String[] args) {		
+		Event.on.subscribe("action#create", m -> print(1,m));
+		Event.on.subscribe("action#create", m -> print(2,m));
+		Event.on.subscribe("action#update", m -> print(3,m));
+		Event.on.subscribe("action#delete", m -> print(4,m));
 
 		Message<String> message1 = new Message<>("Create Action");
 		Message<String> message2 = new Message<>("Update Action");
@@ -22,5 +16,8 @@ public class Runner {
 		Event.on.publish("action#create", message1);
 		Event.on.publish("action#update", message2);
 		Event.on.publish("action#delete", message3);
+	}
+	public static void print(int id, Message<String>  m) {
+		System.out.printf("Subscriber[%d] received: %s%n", id, m.open());
 	}
 }
